@@ -10,81 +10,39 @@
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href ='./css/style.css'>
+        <link rel="stylesheet" type="text/css" href = 'css/styles.css'>
     </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>ADDING NOTE</h1>
-            <div class="pages">
-                <a href="index.html"><img src="./images/Circular_House-512.png">Home</a>  
-            </div>
-        </header>
-       
-        <div id="subHeader">
-                
-                
-        </div>
-
-        <div class="row">
-            
-                <div class="col-12">
-      
-                        <div class="card">
-                                <div class="card-header">
-                                <h3><strong>Add Note</strong></h3>
-                        </div>
-                        <div class="card-body">
-                                <form method="POST" role="form">
-
-                                    <div class="form-group">
-                                        <label for="id">ID</label>
-                                        <input type="text" class="form-control" id="id">
-                                    </div>
-      
-                                    <div class="form-group">
-                                        <label for="name">Title</label>
-                                        <input type="text" class="form-control" id="title">
-                                    </div>
-      
-                                    <div class="form-group">
-                                        <label for="designation">Note</label>
-                                        <textarea rows="3", cols="101" placeholder="Type notes" id="notesArea"></textarea>
-                                        <!-- <input type="text" class="form-control" id="designation"> -->
-                                    </div>
-      
-                                </form>
-                                <br>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-info btn-lg btn-block" id="add"><span class="fa"></span>Submit</button>
-                                </div>
-                        </div>
-                </div>
-      
-        </div>
-
-</div>
-    <footer class="fixed-bottom">Created by YM</footer>
+  <nav class="navbar navbar-dark bg-info">
+    <a class="navbar-brand" href="#">Note Taker
+    </a>
     
-<script>
-        
-        $("#add").on("click", function(event) {
-          event.preventDefault();
-                 
-                      var newNote = {
-                          id: $("#id").val().trim(),
-                          title: $("#title").val().trim(),
-                          note: $("#notesArea").val().trim(),
-                        };
-                
-                 
-                  $.post("/api/notes", newNote)
-                    .then(function(data) {
-                      console.log("notes.html", data);
-                      alert("Adding new note...");
-                    });
-                  });
-    </script>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-4 list-container">
+        <div class="card">
+          <ul class="list-group">
+          </ul>
+        </div>
+      </div>
+      <div class="col-8">
+        <input class="note-title" placeholder="Note Title" maxlength="28" type="text">
+        <textarea class="note-textarea" placeholder="Note Text"></textarea>
+        <div class="icons">
+            <img class="save-note" src="images/saveicon.png"/>
+            
+            <img class="new-note" src="images/icons8-ball-point-pen-64.png"/>
+            <!-- <img class="delete-note" src="images/47-512.png"/> -->
+            <!-- <i class="fas fa-save text-dark save-note bg-secondary"></i>
+            <i class="fas fa-pen text-dark new-note bg-secondary"></i> -->
+          </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
 </body>
+
 </html>

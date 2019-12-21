@@ -1,8 +1,10 @@
+
 var $noteTitle = $(".note-title");
 var $noteText = $(".note-textarea");
 var $saveNoteBtn = $(".save-note");
 var $newNoteBtn = $(".new-note");
 var $noteList = $(".list-container .list-group");
+
 
 // activeNote is used to keep track of the note in the textarea
 var activeNote = {};
@@ -49,9 +51,11 @@ var renderActiveNote = function() {
   }
 };
 
+
 // Get the note data from the inputs, save it to the db and update the view
 var handleNoteSave = function() {
   var newNote = {
+    id: "",
     title: $noteTitle.val(),
     text: $noteText.val()
   };
@@ -115,7 +119,8 @@ var renderNoteList = function(notes) {
     var $li = $("<li class='list-group-item'>").data(note);
     var $span = $("<span>").text(note.title);
     var $delBtn = $(
-      "<i class='fas fa-trash-alt float-right text-danger delete-note'>"
+      // "<i class='fas fa-trash-alt float-right text-danger delete-note'>"
+      "<img class='delete-note' src='images/47-512.png'/>"
     );
 
     $li.append($span, $delBtn);

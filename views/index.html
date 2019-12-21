@@ -10,83 +10,23 @@
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href = './css/style.css'>
+        <!-- <link rel="stylesheet" type="text/css" href = './css/style.css'> -->
     </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>NOTE TAKER</h1>
-            <div class="pages">
-                   
-            </div>
-        </header>
-       
-        <div id="subHeader">
-                <button id="viewAll" type="button" class="btn btn-lg btn-light">View ALL NOTES</button>
-                <button id="addNew" type="button" class="btn btn-lg btn-light"><a href="notes.html">Add NEW NOTE</a></button>
-                <div id="search">
-                        <input id="searchInput" type="text" name="username" placeholder="Search NOTE by id">
-                        <input type="image" id="inputImage" src="./images/searchicon.png">
-                </div> 
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Note Taker
+        </a>
+      </nav>
+      <div class="container">
+        <div style="margin-top: 80px;" class="jumbotron text-center">
+          <h1 class="display-4">Note Taker <span role="img" aria-label="Memo">📝</span></h1>
+          <h4 class="mt-4">Take notes with Express</h4>
+          <a class="btn btn-primary btn-lg mt-4" href="/notes" role="button">Get Started</a>
         </div>
-        <div class="rowdummy">
-            <div class="noteid"><strong>ID</strong></div>
-            <div class="notetitle"><strong>Title</strong></div>
-            <div class="notetext"><strong>NOTE</strong></div>
-            <img class="dummyRemove" src="./images/47-512.png">   
-            
-        </div>
-       <!-- <Sample dummy-data>..>
-        <!-- <div class="noterow">
-                        <div class="noteid">101</div>
-                        <div class="notetitle">SHOP</div>
-                        <div class="notetext">SHOPPING LIST</div>
-        </div> -->
-       
-    </div>
-    <footer class="fixed-bottom">Created by YM</footer>
-    <script>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="./js/index.js"></script>
+    </body>
     
-$("#viewAll").on("click", function(e){
-    e.preventDefault();
-
-    $.get("/api/notes", function(data) {
-        // console.log(data);
-        // if (data) {
-       
-       
-    
-            for (let i=0; i<data.length; i++){
-                let divRow = $("<div>");
-                divRow.attr("class", "noterow");
-                $(".container").append(divRow);
-        
-                let divId = $("<div>")
-                divId.attr("class", "noteid");
-                divId.html(data[i].id);
-                divRow.append(divId);
-                
-
-                let divTitle = $("<div>");
-                divTitle.attr("class", "notetitle");
-                divTitle.text(data[i].title);
-                divRow.append(divTitle);
-
-                let divNote = $("<div>");
-                divNote.attr("class", "notetext");
-                divNote.html(data[i].note);
-                divRow.append(divNote);
-                
-                let divRemove = $("<img>");
-                divRemove.attr("src", "./images/47-512.png");
-                divRemove.attr("class", "removeImage")
-                divRow.append(divRemove);
-                // <input type="image" id="removeImage" src="./images/47-512.png">     
-            }
-    });
-
-})
-    </script>
-</body>
-</html>
+    </html>

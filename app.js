@@ -2,7 +2,7 @@
 var fs = require("fs");
 var express = require("express");
 var path = require("path");
-const notes = require("./db/db.json")
+let notes = require("./db/db.json")
 
 // Sets up the Express App
 
@@ -54,6 +54,8 @@ app.get("*", function(req, res) {
  
 
 // Create New note - takes in JSON input
+
+
 app.post("/api/notes", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
@@ -61,12 +63,54 @@ app.post("/api/notes", function(req, res) {
 
   // Using a RegEx Pattern to remove spaces from newNote
   
-  console.log(newNote);
+  newNote.id = JSON.parse(notes.length+1)
+
+console.log(newNote);
 
   notes.push(newNote);
 
   res.json(newNote);
+
+  fs.writeFile("./db/db.json", JSON.stringify(notes), function(err){
+    if (err){
+      return console.log(err);
+    }
+    console.log("new note is added")
+  })
+
+
 });
+
+
+//Delete Note
+app.delete('/api/notes/:id', function(req, res){
+
+ var id = req.params.id;
+ 
+ var mapped = notes.filter(obj=>{
+ 
+  return obj.id != id;
+
+ });
+
+ 
+ console.log("mapped: "+ JSON.stringify(mapped));
+ 
+notes = mapped;
+
+
+res.send({notes});
+
+fs.writeFile("./db/db.json", JSON.stringify(notes), function(err){
+  if (err){
+    return console.log(err);
+  }
+  console.log("A note is deleted");
+})
+
+ });
+
+
 
 
 

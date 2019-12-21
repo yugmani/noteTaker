@@ -1,18 +1,1 @@
-[
-    {
-      "id": "1",
-      "title": "Journal",
-      "note": "Today's journal"
-      },
-    {
-      "id": "2",
-      "title": "shopping",
-      "note": "costco, walmart"
-    },
-    {
-      "id": "3",
-      "title": "gym",
-      "note": "yoga, treadmill"
-    }
-  ]
-
+[{"id":2,"title":"shopping","note":"costco, walmart"},{"id":3,"title":"gym","note":"yoga, treadmill"},{"id":4,"title":"weekend","text":"play soccer"},{"id":5,"title":"New year","text":"party time"},{"id":5,"title":"Christmas","text":"Gifts collection"}]
